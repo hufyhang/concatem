@@ -1,0 +1,19 @@
+{
+  "name": "concatem",
+  "version": "0.0.1",
+  "description": "Concat'em",
+  "main": "concatem.js",
+  "directories": {
+    "example": "example"
+  },
+  "author": "Feifei Hang <l.daniel.hung@gmail.com> (http://feifeihang.github.io/)",
+  "license": "MIT",
+  "preferGlobal": "true",
+  "bin": {
+    "concatem": "concatem.js"
+  },
+  "dependencies": {
+    "glob": "^4.0.6",
+    "mkdirp": "^0.5.0"
+  }
+}

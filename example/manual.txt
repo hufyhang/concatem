@@ -1,0 +1,5 @@
+<!--concatem:copyright-->
+
+This is a manual document.
+
+<!--header-->

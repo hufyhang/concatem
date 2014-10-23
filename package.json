@@ -6,6 +6,10 @@
   "directories": {
     "example": "example"
   },
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/hufyhang/concatem.git"
+  },
   "author": "Feifei Hang <l.daniel.hung@gmail.com> (http://feifeihang.github.io/)",
   "license": "MIT",
   "preferGlobal": "true",

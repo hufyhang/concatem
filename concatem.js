@@ -125,6 +125,12 @@ function writeFile (filename, content) {
       console.error(err.red);
       return;
     } else {
+      // replace placeholders with predefined values
+      for (var name in defines) {
+        var reg = new RegExp(PLACEHOLDER_HEAD + name + PLACEHOLDER_END, 'g');
+        content = content.replace(reg, defines[name]);
+      }
+
       fs.writeFileSync(filename, content);
       console.log('Generated '.bold.green + filename.blue);
     }

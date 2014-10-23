@@ -9,7 +9,7 @@
   "concat": {
 
     "html": {
-      "src": ["*.html"],
+      "src": ["*.html", "web/*.html"],
       "dest": "./dist"
     },
 

@@ -25,6 +25,7 @@ var CONFIG_FILE = 'config.js';
 var PLACEHOLDER_HEAD = '<!--concatem:';
 var PLACEHOLDER_END = '-->';
 
+var colors = require('colors');
 var mkdirp = require("mkdirp");
 var fs = require('fs');
 var glob = require('glob');
@@ -39,7 +40,7 @@ for (var i = 2; i < process.argv.length; ++i) {
 // check is current folder has config.js
 var hasConfig = fs.existsSync(path.join(DIR, CONFIG_FILE));
 if (!hasConfig) {
-  console.error('Fatal: could not find config.js file.');
+  console.error('Fatal: could not find config.js file.'.bold.red);
   process.exit(0);
 }
 
@@ -80,7 +81,7 @@ else {
   }
 }
 
-console.log('Finished.');
+console.log('Finished.'.bold.green);
 
 function processGroup (group) {
   if (concat[group] === undefined) {
@@ -92,6 +93,7 @@ function processGroup (group) {
     // use glob lib to match wildcards
     glob(path.join(DIR, item), function (err, files) {
       files.forEach(function (file) {
+        var pathname = path.dirname(file).replace(DIR, '');
         var basename = path.basename(file);
         var baseext = path.extname(file);
         var extension = concat[group].extension || path.extname(file);
@@ -100,7 +102,7 @@ function processGroup (group) {
         }
         basename = basename.replace(baseext, '');
 
-        var output = path.join(DIR, concat[group].dest, basename + extension);
+        var output = path.join(DIR, concat[group].dest, pathname, basename + extension);
 
         var content = fs.readFileSync(file, 'utf-8');
         // replace placeholders with predefined values
@@ -120,10 +122,11 @@ function processGroup (group) {
 function writeFile (filename, content) {
   mkdirp(path.dirname(filename), function (err) {
     if (err) {
-      console.error(err);
+      console.error(err.red);
       return;
     } else {
-      fs.writeFileSync(filename, content)
+      fs.writeFileSync(filename, content);
+      console.log('Generated '.bold.green + filename.blue);
     }
   });
 }

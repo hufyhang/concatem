@@ -1,0 +1,120 @@
+body {
+  color: #66595c;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+  min-height: 100%;
+  position: relative;
+}
+
+header#banner {
+  position: relative;
+  -webkit-animation: drop-in 0.5s;
+          animation: drop-in 0.5s;
+}
+
+@-webkit-keyframes drop-in {
+  from {top: -1000px;}
+  to {top: 0px;}
+}
+
+@keyframes drop-in {
+  from {top: -1000px;}
+  to {top: 0px;}
+}
+
+header#banner, footer {
+  background: #efeae1;
+}
+
+#banner hgroup {
+  text-align: center;
+  padding: 0.5em 0;
+  margin: 0 auto;
+}
+
+#banner hgroup h1 {
+  font-size: 5vw;
+}
+
+#banner hgroup #subtitle {
+  font-size: 4vw;
+  font-weight: lighter;
+}
+
+#banner hgroup ul {
+  margin: 0;
+  padding: 0;
+}
+
+#banner hgroup ul li {
+  list-style: none;
+  display: inline;
+}
+
+#banner hgroup ul li a {
+  display: inline-block;
+  border: 2px solid #66595c;
+  padding: 15px 20px;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width: 80px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #66595c;
+
+  -webkit-transform: skewX(160deg);
+          transform: skewX(160deg);
+
+  -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+}
+
+#banner hgroup ul li a:hover {
+  background: #66595c;
+  color: #fff;
+}
+
+#banner #nav-select {
+  margin: 20px;
+  background: #fff;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+footer div#footer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+footer span {
+  text-align: center;
+}
+
+.wrapper {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  padding-bottom: 100px;
+  padding-top: 50px;
+
+  -webkit-animation: left-to-right 0.5s;
+
+          animation: left-to-right 0.5s;
+}
+
+@-webkit-keyframes left-to-right {
+  from {left: -1000px;}
+  to {left: 0px;}
+}
+
+@keyframes left-to-right {
+  from {left: -1000px;}
+  to {left: 0px;}
+}

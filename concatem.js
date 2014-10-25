@@ -119,12 +119,45 @@ function processGroup (group) {
   });
 }
 
+function checkAndSet (content) {
+  var reg = new RegExp(PLACEHOLDER_HEAD + 'set:.+' + PLACEHOLDER_END, 'g');
+  var sets = content.match(reg);
+  if (sets === null) {
+    return content;
+  }
+
+  sets.forEach(function (set) {
+    // remove PLACEHOLDER_HEAD and PLACEHOLDER_END first
+    set = set.replace(PLACEHOLDER_HEAD + 'set:', '');
+    set = set.replace(PLACEHOLDER_END, '');
+
+    if (set.indexOf('=') !== -1) {
+      set = set.trim();
+      set = set.split('=');
+      var item = set[0].trim();
+      var value = set[1].trim();
+
+      // if value is string
+      if (value[0] !== '{' && value[value.length - 1] !== '}') {
+        defines[item] = value;
+      } else {
+        defines[item] = JSON.parse(value).text;
+      }
+      content = content.replace(set, '');
+      console.log('Set '.green + item.blue + ' to "'.green + value.blue + '"');
+    }
+  });
+  return content;
+}
+
 function writeFile (filename, content) {
   mkdirp(path.dirname(filename), function (err) {
     if (err) {
       console.error(err.red);
       return;
     } else {
+      content = checkAndSet(content);
+
       // replace placeholders with predefined values
       for (var name in defines) {
         var reg = new RegExp(PLACEHOLDER_HEAD + name + PLACEHOLDER_END, 'g');

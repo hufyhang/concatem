@@ -139,7 +139,9 @@ function checkAndSet (content) {
 
       // if value is string
       if (value[0] !== '{' && value[value.length - 1] !== '}') {
-        defines[item] = value;
+        if (fs.existsSync(value)) {
+          defines[item] = fs.readFileSync(path.join(DIR, value), 'utf-8');
+        }
       } else {
         defines[item] = JSON.parse(value).text;
       }

@@ -21,7 +21,7 @@ if (process.argv[2] === '--example') {
 }
 
 var DIR = process.cwd();
-var CONFIG_FILE = 'config.js';
+var CONFIG_FILE = 'concatemfile.js';
 var PLACEHOLDER_HEAD = '<!--concatem:';
 var PLACEHOLDER_END = '-->';
 

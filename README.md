@@ -8,11 +8,11 @@ Suitable for authoring simple static website or generating files.
 Usage
 ------
 
-Go to a folder with `config.js` files inside, and then:
+Go to a folder with `concatemfile.js` files inside, and then:
 
 `concatem [task]`
 
-If no `task` parameter presented, process all tasks defined in `config.js`.
+If no `task` parameter presented, process all tasks defined in `concatemfile.js`.
 
 Config.js
 ---------
